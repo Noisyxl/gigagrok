@@ -1226,7 +1226,8 @@ function drawGiga(g,x,gy,u,kind,style,tint,c){
 
 /* the shouts */
 const SAY=[];
-const SHOUT=['PUMP','PUMP','PUMP','PUMP','190X','GIGA','ONE MORE','UP ONLY','PUMP'];
+const SHOUT=['ROBIN HOOD','ROBIN HOOD','ROBIN HOOD','ROBIN HOOD',
+             '190X','GIGA','ONE MORE','UP ONLY','ROBIN HOOD'];
 function drawBubble(g,x,y,txtS,a,k,W,side){
   const tw=txtW(txtS,k), bw=tw+10, bh=7*k+9;
   let bx=Math.round(x-bw/2), by=Math.round(y-bh-6), tail=true;
@@ -1263,8 +1264,8 @@ function lineupTick(dt){
     p.ph+=dt*p.sp*(BST.on?1.9:1);
     if(Math.floor(before/(Math.PI*2))!==Math.floor(p.ph/(Math.PI*2))){
       p.reps=(p.reps||0)+1;
-      if(Math.random()<(i===2?0.9:0.45))
-        SAY.push({i:i,t:1.25,max:1.25,txt:i===2?'PUMP':PICK(SHOUT)});
+      if(Math.random()<(i===2?0.85:0.3))
+        SAY.push({i:i,t:1.35,max:1.35,txt:i===2?'ROBIN HOOD':PICK(SHOUT)});
     }
   });
   for(let i=SAY.length-1;i>=0;i--){SAY[i].t-=dt;if(SAY[i].t<=0)SAY.splice(i,1);}
@@ -1295,7 +1296,7 @@ function drawLineup(){
   g.fillStyle='rgba(47,221,74,'+(0.16+cc*0.30).toFixed(2)+')';
   g.fillRect(0,gy,W,1);
 
-  const k=W>520?2:1;
+  const k=W>620?2:1;
   SAY.forEach(sy=>{
     const p=LINE[sy.i];
     const a=CL(sy.t/sy.max,0,1);
